@@ -1,0 +1,38 @@
+\section{Introduction}
+A single paragraph of meaningless text.  \lipsum[1]
+
+
+This is the introduction. Some Latex-specific formatting tips are provided here. Proper quotation marks are done ``this way''. 
+
+A line break requires an empty line between two lines of text in your code. Do not use \verb+\newline+ to force a new paragraph.
+
+There is a difference between three types of dashes: (1) simple dash for composite words such as Latex-specific; (2) double dash for numerical range such as 204--2014; (3) long dashes---I am sure you have seen them before---for included sentences.
+
+Bullet point environments:
+\begin{itemize}
+\item In New York
+\item Rio
+\item Tokyo
+\end{itemize}
+
+Enumerated environments:
+\begin{enumerate}
+\item Most important
+\item Less important
+\item Not important
+\end{enumerate}
+
+\subsection{Citing literature}
+We can refer to papers directly. I greatly admire the study by \cite{ADRIAN1934}. We can also cite papers in parenthesis. Other studies are great, too \citep{Albrecht1982}. Sometimes, we want to write something additionally into the parentheses \citep[the study by][is also not bad]{Allard2011}.
+
+\subsection{Within-paper references}
+\label{withpaperrefs}
+You can easily refer to sections within the paper. This is explained in section \ref{withpaperrefs}. You can also refer to figures. The numbering is done fully automatically, see Figure \ref{samplefig}.
+
+
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=1\textwidth]{convincing.png}
+%\caption{This is the figure caption. Note that figures in vector format (.eps; .pdf) are preferred over bitmap formats (.jpg).}
+%\label{samplefig}
+%\end{figure}
