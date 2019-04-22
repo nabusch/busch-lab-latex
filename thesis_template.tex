@@ -1,0 +1,163 @@
+%\documentclass[twoside, a4paper,12pt]{scrartcl} % For two-sided printing on paper.
+\documentclass[oneside, a4paper,12pt]{scrartcl} % For one-sided printing or screen.
+
+
+% ---------------------------------------------------
+% General
+% ---------------------------------------------------
+\usepackage{graphicx} % For including figure
+\usepackage[ngerman]{babel} % Set default language for things like "Abbildung" or "References"
+\usepackage{url} % For typesetting URLs
+
+
+% ---------------------------------------------------
+% Fonts and typesetting
+% ---------------------------------------------------
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} 
+
+% ...............
+% Load serif font 
+% ...............
+%\usepackage[rm]{libertine} % Another favorite of mine: font designed for Linux OS.
+\usepackage{lmodern} % Classic Latex font - easy to recognize as Latex document.
+
+% ...............
+% Load sans-serif font
+% ...............
+% Just an aesthetic choice, if you do not like the computer-modern-sans-serif
+%\usepackage{helvet} % Classic font, you can't go wrong with this.
+\usepackage{roboto} % Font designed for webpages by Google.
+%\renewcommand*\familydefault{\sfdefault} % activate if all text should be sans serif
+
+% ...............
+% Load typewriter font. Useful for \verb|text| environment.
+% ...............
+\renewcommand*\ttdefault{cmvtt} 
+
+
+% ---------------------------------------------------
+% Typesetting and layout
+% ---------------------------------------------------
+\linespread{1.15} % Slightly increased line spacing.
+
+
+\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+% activate={true,nocompatibility} - activate protrusion and expansion
+% final - enable microtype; use "draft" to disable
+% tracking=true, kerning=true, spacing=true - activate these techniques
+% factor=1100 - add 10% to the protrusion amount (default is 1000)
+% stretch=10, shrink=10 - reduce stretchability/shrinkability (default is 20/20)
+
+
+% Use this to manipulate the page margin width.
+\usepackage[a4paper,top=2.5cm,left=2.5cm,right=2.5cm,bottom=2.7cm]{geometry}
+
+
+% This gives the figure captions a more professional look.
+\usepackage[margin=24pt,format=plain,font=footnotesize,labelfont=bf,skip=10pt]{caption}  
+
+
+% This gives the abstract a more professional look.
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\small} % Set the abstract itself to small italic text
+
+
+% Indentation and extra spacing for paragraphs
+\setlength{\parindent}{8pt}
+
+
+%\usepackage{indentfirst} % without this, the first paragraph of a section is NOT indented.
+\setlength{\parskip}{4pt plus 2pt minus 1pt}
+
+
+% ---------------------------------------------------
+% Important and useful packages
+% ---------------------------------------------------
+% If you want a figure to include more than a single image file. Not terribly important, but I use it in this sample file.
+\usepackage{subcaption}
+
+\usepackage{csquotes} % proper typesetting of quotes
+\usepackage{soul} % strike out and underline letters
+\usepackage{color}
+
+% Optional, if you want linenumbers in the margin in the pdf. 
+% Can be useful for proofreading. Switch on with "\linenumbers" in the text.
+\usepackage{lineno} 
+
+% Optional for draft manuscripts: put all figures at the end of the document
+% and put a "Figure X around here" placeholder in the text.
+%\usepackage[nolists]{endfloat}
+
+% For typesetting epigraphs at chapter beginnings.
+\usepackage{epigraph}
+\renewcommand{\epigraphsize}{\small}
+\setlength{\epigraphwidth}{0.4\textwidth}
+
+% For typesetting of authors and affiliations on title page for articles.
+% Not necesary for thesis title page.
+\usepackage{authblk}
+\renewcommand\Authfont{\normalsize}
+\renewcommand\Affilfont{\small\itshape}
+
+% ---------------------------------------------------
+% Bibliography
+% ---------------------------------------------------
+\usepackage{natbib}
+\renewcommand{\bibfont}{\small} % Make the font size smaller for the bibliography
+\usepackage[numbib]{tocbibind} % This makes the Bibliography a numbered section.
+
+
+% ---------------------------------------------------
+% Headers and footers
+% ---------------------------------------------------
+\usepackage[headsepline]{scrpage2}
+\clearscrheadfoot
+\pagestyle{scrheadings}
+\automark{section}
+\ohead{\pagemark}
+\chead{}
+\ihead{\headmark}
+
+
+% ---------------------------------------------------
+% Text shortcuts
+% ---------------------------------------------------
+\usepackage{xspace} % optional white space if not followed by punctuation.
+\newcommand{\fc}{flux capacitor\xspace}
+\newcommand{\roc}{receiver operating characteristic\xspace}
+
+
+
+% ---------------------------------------------------
+% To do notes in page margins
+% ---------------------------------------------------
+\usepackage[x11names]{xcolor}
+\usepackage[colorinlistoftodos, textsize=footnotesize, linecolor=red!60, backgroundcolor=Ivory2, bordercolor=red!60]{todonotes}
+\reversemarginpar
+
+
+
+% -----------------------------------------------------------------
+% Main text.
+% -----------------------------------------------------------------
+\begin{document}
+	
+\include{thesis_titlepage}	
+\maketitle
+
+\tableofcontents
+\newpage
+
+% Optional: switch on line numbering in pdf.
+% \linenumbers
+
+%\include{Content} %  \include{file} starts on a new page.
+\input{thesis_content} % \input{file} does not start on a new page.
+
+
+\bibliographystyle{apalike}
+\bibliography{bibliography}
+
+\end{document}
