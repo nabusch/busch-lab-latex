@@ -34,13 +34,11 @@ There should be a non-separable white space between numbers and their units of m
 \todo[inline]{This is a longer note-to-self kind of text. I describe what I think. Maybe I need to work on this section more. Or delete it? Maybe I just ask my cat what to do with it.}
 
 
+
 \subsection{Text shortcuts}
 If you use bits of text again and again, make your life easier with
 \newline
  \verb+ \newcommand{\blabla}{my little shortcut}+. This turns a long string of text into a tiny little shortcut. I use my \fc a lot, every day a new \fc. Everybody loves the \fc and the \roc! I repeat: \roc, \roc, \roc!
-
-
-
 
 \begin{figure}[t]
 	\centering
@@ -49,6 +47,14 @@ If you use bits of text again and again, make your life easier with
 	\label{samplefig}
 \end{figure}
 
+% Example for alternate figure caption setup that allows for notes below the figure. Requires line 65 in the template. 
+%\begin{figure}[t]
+%	\centering
+%	\includegraphics[width=0.25\linewidth]{Figures/PaleBlueDot.jpg}
+%	\caption{A pale, blue dot, suspended in a sunbeam \citep{NASA}.}
+%	\floatfoot{\textit{Note.} Blue Dot marks spaceship location.}
+%	\label{samplefig}
+%\end{figure}
 
 \subsection{Environments}
 
@@ -66,7 +72,6 @@ Enumerated environments:
 \item Build wall.
 \end{enumerate}
 
-
 \subsection{Within-paper references and figures}
 \label{withpaperrefs}
 
@@ -76,9 +81,67 @@ We can also use footnotes; little annotations that appear at the bottom of the p
 
 \footnotetext{This is the footnote text.}
 
+\newpage
+
+\paragraph{Figures embedded in text.}
+
+\begin{wrapfigure}{r}{6cm}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/dog.jpg}
+	\caption{A very good boy.}
+	\label{dog}
+\end{wrapfigure}
+
+Figures are usually scaled full size and isolated from text. In some instances, providing a small picture right next to what you are describing can be useful for a reader. Let's use this cute dog as an example: I have added it as a \textit{wrapfigure} right next to this paragraph. Now you can directly enjoy a visual of this very good boy while reading about his floppy brown ears and smart nose!
+
+
+\subsection{Formulas}
+There are two possibilities for typesetting a formula in \LaTeX. Simply using \verb+$+ signs inserts it \textit{inline} like this:  $\alpha + \beta + \gamma = 180\degree$. If the formula is not part of your paragraph or you would prefer to typeset it in its own line, use the following \textit{display} mode:
+
+\begin{displaymath}
+x_{1,2} = \frac{-b \pm \sqrt{b^2-4ac}}{2ac} 
+\end{displaymath}
+
+In a section containing multiple formulas you can also use \verb+{equation}+ instead of \verb+{displaymath}+ to automatically number the equations for easier referencing.
+
+\begin{equation}
+A = \frac{1}{2} \pi r^2
+\end{equation}
+
+Let's add a second formula here:
+
+\begin{equation}
+E = mc^2
+\end{equation}
+
+For the appropriate \LaTeX code for specific symbols not displayed in this example see comprehensive lists, e.g. \url{https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols}.
+
+\subsection{Tables}
+
+Setting tables in \LaTeX can be tricky, especially if you want to connect certain cells. Use the commands \verb+ \multicolumn{x}{c}{"columns header"}+ to connect x columns and \verb+ \multirow{y}{*}{"rows header"}+ to connect y rows - nest as required. A minimal example:
+
+\begin{table}[h!]
+    \centering
+    \caption{The use of multicolumns and - rows.}
+    \label{ex_table}
+    \begin{tabular}{@{}l*{5}{c}@{}} 
+    \toprule
+    column a & \multicolumn{2}{c}{multicolumn b + c} & \multicolumn{2}{c}{multicolumn d + e}\\
+    \midrule
+    \addlinespace
+    \multirow{2}{*}{multirow 1 + 2 }
+    & \multicolumn{2}{c}{cell 1} & {cell 2} & {cell 3}\\ 
+    & {cell 4} & {cell 4} & {cell 6} & {cell 7}\\ 
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+% using booktabs commands like \toprule or \bottomrule creates nicer lines than \hline & co.!
+
+Reference tables like Table \ref{ex_table} on page \pageref{ex_table} as explained for figures in section \ref{withpaperrefs}.
+
 
 \subsection{Citing literature}
-
 
 We can refer to papers directly. I greatly admire the study by \cite{ADRIAN1934}. We can also cite papers in parenthesis \citep{ADRIAN1934}. Sometimes, we want to write something additionally into the parentheses \citep[the study by][is also not bad]{Allard2011}. For all details on different ways to cite literature with the natbib package, refer to \url{http://merkel.texture.rocks/Latex/natbib.php}. 
 
@@ -111,3 +174,4 @@ The aggregate of all our joys and sufferings, thousands of confident religions, 
 	\caption{Comparison of vector format and bitmap format. Left: figure built from a *.pdf file. The separate lines are easy to see, can be zoomed in and text is searcheable in the pdf output. Right: figure built from *.jpg. Doesn't look so good.}
 	\label{pdf_vs_jpg}
 \end{figure}
+

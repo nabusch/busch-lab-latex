@@ -6,15 +6,19 @@
 % General
 % ---------------------------------------------------
 \usepackage{graphicx} % For including figure
-\usepackage[ngerman]{babel} % Set default language for things like "Abbildung" or "References"
+\usepackage[english]{babel} % Set default language for things like "Figure" or "References"
 \usepackage{url} % For typesetting URLs
 
+% additionally useful--------------------------------
+\usepackage{seqsplit} % for automatic line breaks 
+\usepackage{lscape} % enable landscape format 
 
 % ---------------------------------------------------
 % Fonts and typesetting
 % ---------------------------------------------------
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc} 
+\usepackage{gensymb} % symbols for e.g. formulas 
 
 % ...............
 % Load serif font 
@@ -57,6 +61,11 @@
 % This gives the figure captions a more professional look.
 \usepackage[margin=24pt,format=plain,font=footnotesize,labelfont=bf,skip=10pt]{caption}  
 
+% Alternate figure caption setup:
+% \usepackage[capposition=top]{floatrow} 
+% Caption of figure is moved to the top, leaving space for a note below the figure. 
+% Enable line 53 - 59 in the content script to see an example.
+
 
 % This gives the abstract a more professional look.
 \usepackage{abstract}
@@ -71,6 +80,8 @@
 %\usepackage{indentfirst} % without this, the first paragraph of a section is NOT indented.
 \setlength{\parskip}{4pt plus 2pt minus 1pt}
 
+% For persistent issues with overfull boxes, use with caution!
+%\setlength{\emergencystretch}{5pt}  % when enabled, this allows a slightly larger tolerance in paragraphs with overfull boxes without changing the overall tolerance
 
 % ---------------------------------------------------
 % Important and useful packages
@@ -96,10 +107,22 @@
 \setlength{\epigraphwidth}{0.4\textwidth}
 
 % For typesetting of authors and affiliations on title page for articles.
-% Not necesary for thesis title page.
+% Not necessary for thesis title page.
 \usepackage{authblk}
 \renewcommand\Authfont{\normalsize}
 \renewcommand\Affilfont{\small\itshape}
+
+% For Figures embedded in text.
+\usepackage{wrapfig}
+
+% Nice options for tables.
+\usepackage{multirow}
+\usepackage{booktabs}
+\setlength\tabcolsep{8pt}
+
+% Adds some additional options for including figures. 
+\usepackage{graphicx}
+
 
 % ---------------------------------------------------
 % Bibliography
@@ -107,13 +130,13 @@
 \usepackage{natbib}
 \renewcommand{\bibfont}{\small} % Make the font size smaller for the bibliography
 \usepackage[numbib]{tocbibind} % This makes the Bibliography a numbered section.
-
+%\addto{\captionsenglish}{\renewcommand{\bibname}{References}} % use this to rename the Bibliography to "References"
 
 % ---------------------------------------------------
 % Headers and footers
 % ---------------------------------------------------
-\usepackage[headsepline]{scrpage2}
-\clearscrheadfoot
+\usepackage[headsepline]{scrlayer-scrpage} % scrpage2 deprecated 
+\clearpairofpagestyles %clearscrheadfoot deprecated
 \pagestyle{scrheadings}
 \automark{section}
 \ohead{\pagemark}
